@@ -78,16 +78,16 @@ Model Evaluation
 
 The models were evaluated using classification accuracy before and after hyperparameter tuning.
 
-Model	Accuracy Before Tuning	Accuracy After Tuning
+Model	Before Tuning	After Tuning
 Logistic Regression	65.3%	65.3%
 Random Forest	59.7%	59.7%
 Decision Tree	44.4%	65.3%
 
 Hyperparameter Tuning
 
-GridSearchCV with 5-fold cross-validation was used to identify suitable hyperparameters for each model.
+GridSearchCV with 5-fold cross-validation was used to identify the best hyperparameters for each model.
 
-The best parameters were:
+Best Parameters:
 
 * Logistic Regression: C = 10
 * Random Forest: criterion = gini, max_depth = 5, n_estimators = 200
@@ -97,9 +97,10 @@ The Decision Tree showed the largest improvement after tuning, increasing its ac
 
 Results
 
-After hyperparameter tuning, Logistic Regression and Decision Tree achieved the highest test accuracy of 65.3% among the implemented models.
+After hyperparameter tuning, Logistic Regression and Decision Tree achieved the highest test accuracy of 65.3%.
 
-The results demonstrate that hyperparameter optimization can significantly improve the performance of some machine learning models, particularly the Decision Tree in this project.
+The results show that hyperparameter tuning improved the performance of the Decision Tree significantly.
+
 
 Deployment
 
