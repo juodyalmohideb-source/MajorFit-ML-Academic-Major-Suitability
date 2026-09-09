@@ -1,22 +1,22 @@
-MajorFit: Predicting Students’ Academic Major Suitability Based on Personality Traits
+MajorFit – Academic Major Suitability Prediction
 
 Project Overview
 
-MajorFit is a machine learning project that predicts whether an academic major is suitable for a student based on personality traits, learning preferences, problem-solving style, academic performance, major interest, and career alignment.
+MajorFit is a machine learning project that predicts whether a student’s academic major is suitable for their personality traits, academic preferences, and career alignment.
 
-The project aims to support students in making more informed academic major decisions by analyzing the relationship between students’ characteristics and their selected major.
+The project aims to support students in making more informed decisions about their academic major by analyzing different personality and academic-related factors.
 
 Problem Statement
 
-Students may choose academic majors without considering whether the major aligns with their personality, interests, learning preferences, and career goals. This may lead to low academic satisfaction, reduced performance, and uncertainty about future career paths.
+Students may choose academic majors without considering whether the major matches their personality, interests, learning preferences, and career goals. This can lead to low academic satisfaction and uncertainty about their future career.
 
-This project addresses this problem by developing machine learning classification models to predict academic major suitability.
+MajorFit addresses this problem by using machine learning classification models to predict major suitability.
 
 Dataset
 
-The dataset was collected through an online questionnaire. The data is numerically encoded and contains information related to students’ academic and personality characteristics.
+The dataset contains questionnaire responses related to students’ academic and personality characteristics.
 
-The dataset includes the following features:
+The features include:
 
 * Major Field
 * Academic Year
@@ -28,39 +28,39 @@ The dataset includes the following features:
 * Academic Performance
 * Major Choice
 * Career Alignment
-* Target
 
-The target variable represents the suitability classification.
+The target variable represents major suitability:
+
+* 0 – Suitable
+* 1 – Neutral
+* 2 – Not Suitable
 
 Data Preprocessing
 
-The following preprocessing steps were applied:
+The dataset was prepared before model training by:
 
-* Loaded the dataset using Pandas.
-* Checked for missing values.
-* Filled missing values using the mode when necessary.
-* Removed duplicate records.
-* Checked the data types.
-* Separated the input features from the target variable.
-
-The dataset was already numerically encoded before model training.
+* Checking for missing values
+* Filling missing values using the mode when necessary
+* Removing duplicate records
+* Checking data types
+* Separating the input features from the target variable
+* Splitting the data into 80% training and 20% testing sets using stratified sampling
 
 Methodology
 
-The machine learning workflow includes:
+The project followed a machine learning workflow that included:
 
-1. Data Preprocessing
-2. Train-Test Split
-3. Model Training
-4. Model Evaluation
-5. Hyperparameter Tuning
-6. Model Comparison
-
-The dataset was divided into training and testing sets using an 80/20 split with stratification.
+1. Data Understanding
+2. Data Preparation
+3. Exploratory Data Analysis
+4. Model Training
+5. Model Evaluation
+6. Hyperparameter Tuning
+7. Prediction and Deployment
 
 Machine Learning Models
 
-Three classification algorithms were implemented:
+Three classification models were implemented:
 
 Logistic Regression
 
@@ -68,55 +68,46 @@ Used as a baseline classification model.
 
 Decision Tree
 
-Used to model decision rules and capture non-linear relationships between the input features and the target.
+Used to capture non-linear relationships between the input features and the target variable.
 
 Random Forest
 
-Used as an ensemble classification model based on multiple decision trees.
+Used as an ensemble model to improve prediction performance and reduce overfitting.
 
 Model Evaluation
 
-The models were evaluated using classification performance metrics, including:
+The models were evaluated using classification accuracy before and after hyperparameter tuning.
 
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* Confusion Matrix
+Model	Accuracy Before Tuning	Accuracy After Tuning
+Logistic Regression	65.3%	65.3%
+Random Forest	59.7%	59.7%
+Decision Tree	44.4%	65.3%
 
 Hyperparameter Tuning
 
-GridSearchCV with 5-fold cross-validation was used to search for suitable hyperparameter combinations for each model.
+GridSearchCV with 5-fold cross-validation was used to identify suitable hyperparameters for each model.
 
-The best parameters identified by the notebook were:
+The best parameters were:
 
-Model	Best Parameters
-Logistic Regression	C = 10
-Random Forest	n_estimators = 200, max_depth = 5, criterion = gini
-Decision Tree	max_depth = 3, criterion = gini
+* Logistic Regression: C = 10
+* Random Forest: criterion = gini, max_depth = 5, n_estimators = 200
+* Decision Tree: criterion = gini, max_depth = 3
+
+The Decision Tree showed the largest improvement after tuning, increasing its accuracy from 44.4% to 65.3%.
 
 Results
 
-The accuracy results recorded in the notebook are:
+After hyperparameter tuning, Logistic Regression and Decision Tree achieved the highest test accuracy of 65.3% among the implemented models.
 
-Model	Accuracy Before Tuning	Accuracy After Tuning
-Logistic Regression	0.653	0.653
-Random Forest	0.597	0.597
-Decision Tree	0.444	0.653
-
-Based on the recorded test accuracy after tuning, Logistic Regression and Decision Tree achieved the highest accuracy at approximately 65.3%.
-
-The Decision Tree showed the largest improvement after hyperparameter tuning.
+The results demonstrate that hyperparameter optimization can significantly improve the performance of some machine learning models, particularly the Decision Tree in this project.
 
 Deployment
 
-The project was developed as a machine learning application for predicting academic major suitability.
+The trained model was integrated into a Streamlit web application that allows users to enter their characteristics and receive a predicted major suitability result.
 
-Application:
+Application: https://majorfit-app.streamlit.app/
 
-https://majorfit-app.streamlit.app/
-
-Technologies Used
+Technologies
 
 * Python
 * Pandas
@@ -126,20 +117,14 @@ Technologies Used
 * Seaborn
 * Streamlit
 * Jupyter Notebook
-
-Project Files
-
-* MajorFit (1).csv — Dataset used for the project
-* MajorFit_ML.ipynb — Jupyter Notebook containing data preprocessing, model training, evaluation, and hyperparameter tuning
-* projectML_converted.html — HTML export of the Jupyter Notebook
-* requirements.txt — Python dependencies required for the project
+* GridSearchCV
 
 Future Improvements
 
-Future improvements could include:
+Future work could include:
 
-* Collecting a larger dataset.
-* Adding more personality and behavioral features.
-* Testing additional machine learning algorithms.
-* Improving feature engineering and model optimization.
-* Further improving the deployed application.
+* Collecting a larger and more diverse dataset
+* Adding more personality and behavioral features
+* Testing additional machine learning algorithms
+* Improving model performance through further feature engineering and tuning
+* Enhancing the deployed application
